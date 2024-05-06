@@ -1,17 +1,28 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");?>
 <div>
-    СБРОС СЕО У ИНФОБЛОКА
+    СБРОС СЕО У ИНФОБЛОКА<br><br>
 </div>
 <div>
     Для запуска очистки СЕО нажать:
-    <ul>
-        <li><a href="?type=section">У разделов</a></li>
-        <li><a href="?type=element">У элементов</a></li>
-    </ul>
+    <form action="" method="get">
+        Номер инфоблока<br>
+        <input type="text" name="iblock" value="<?=isset($_GET['iblock'])?$_GET['iblock']:''?>"><br><br>
+        Что чистим<br>
+        <select name="type">
+            <option value="section" selected>У разделов</option>
+            <option value="element">У элементов</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="ОЧИСТИТЬ">
+    </form>
 </div>
 <?php
-$blid=27;
+if(isset($_GET['iblock']) && !empty($_GET['iblock'])){
+    $blid=$_GET['iblock'];
+}else{
+    return;
+}
 CModule::IncludeModule('iblock');
 $arFilter = array('IBLOCK_ID' => $blid);
 
