@@ -1,0 +1,22 @@
+<?
+
+					//$url_id = toLower($enum["XML_ID"]);
+            $url_id = CUtil::translit(toLower($value), "ru");
+
+
+
+            
+					$value = $this->cache[$PROPERTY_ID][$key]['VALUE'];
+					$file_id = $this->cache[$PROPERTY_ID][$key]['FILE_ID'];
+					$sort = ($this->cache[$PROPERTY_ID][$key]['SORT'] ?? 0);
+					//$url_id = toLower($this->cache[$PROPERTY_ID][$key]['UF_XML_ID']);
+                    $url_id =CUtil::translit(toLower($value), "ru");
+
+
+
+                    			default:
+				$value = $key;
+				$sort = 0;
+                $url_id = CUtil::translit(toLower($enum["VALUE"]), "ru");
+				//$url_id = toLower($value);
+?>
