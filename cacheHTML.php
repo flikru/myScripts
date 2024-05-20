@@ -1,3 +1,4 @@
+<?php
 $menu = dataCache('menuPlanning', "menuLoad", 60*60, 'planning',0 );
 
 function menuLoad(){
@@ -36,3 +37,4 @@ function dataCache($cacheKey, $function, $cacheTime = 60*60*4, $cachePath='allCa
     }
     return $vars;
 }
+?>
