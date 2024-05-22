@@ -1,6 +1,8 @@
 <?
-function generateSitemap()
+function generateSitemap(&$arFields=[])
 {
+    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/logtest.txt',print_r($arFields,true));
+if($arFields['IBLOCK_ID']==70):
     CModule::IncludeModule("iblock");
     $arSelect = array(
         "ID",
@@ -20,13 +22,11 @@ function generateSitemap()
         }else{
             continue;
         }
-        //2024-05-22T18:48:28+03:00
         $elements[] = [
             "date"=>date("Y-m-d\Th-i-s+3:00"),
             "id"=>$url,
         ];
     }
-    //$dbh = new PDO('mysql:dbname=db_name;host=localhost', 'логин', 'пароль');
 
     $dom = new DOMDocument('1.0', 'utf-8');
     $urlset = $dom->createElement('urlset');
@@ -57,12 +57,8 @@ function generateSitemap()
 
     $dom->appendChild($urlset);
 
-// Сохранение в файл.
     $dom->save( $_SERVER['DOCUMENT_ROOT'].'/sitemaptest.xml');
-
-// Или отправка в браузер.
-    //header('Content-Type: text/xml');
     echo $dom->saveXML();
-    //exit();
+endif;
 }
 ?>
