@@ -1,0 +1,2 @@
+AmoCrm API V2
+https://htmlpreview.github.io/?https://github.com/andrey-tech/amocrm-api-v2-docs/blob/master/docs/auth.html
